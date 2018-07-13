@@ -36,4 +36,14 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * 認証時のユーザーフィールドを変更する為にオーバーライド.
+     *
+     * @return void
+     */
+     public function username()
+     {
+         return 'user_id';
+     }
 }
