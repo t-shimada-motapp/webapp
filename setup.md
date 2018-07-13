@@ -7,3 +7,26 @@
 > flush privileges;
 ```
 
+## git clone の後にすること
+
+ライブラリ等のインストール
+```
+$ composer install
+```
+
+環境設定ファイルの作成とアプリケーションキーの作成
+```
+$ cp .env.example .env
+$ php artisan key:generate
+```
+
+DBの作成
+```
+$ php artisan migrate
+```
+
+Admin-LTEのインストール
+```
+$ cd public
+$ bower install admin-lte
+```
