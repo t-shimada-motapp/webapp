@@ -1,0 +1,23 @@
+{
+
+    "Sign in to start your session": "開始するにはログインしてください",
+    "User Id": "アカウント",
+    "Password": "パスワード",
+    "Remember Me": "ログイン状態を保存する",
+    "Login": "ログイン",
+    "Forgot Your Password?": "パスワードをお忘れの方",
+    "Register": "アカウント作成",
+
+    "Register a new membership": "新しいアカウントを登録します",
+    "Name": "お名前",
+    "E-Mail Address": "メールアドレス",
+    "Retype password": "パスワード確認用",
+    "Read the terms": "利用規約はこちら",
+    "I agree to the terms": "利用規約に同意します",
+    "Regist": "登録",
+    "I already have a membership": "既にアカウントをお持ちの方",
+
+    "Request Reset Password": "<small>パスワードリセット用のURLリンクを送信します</small>",
+    "Send Password Reset Link": "送信"
+
+}
