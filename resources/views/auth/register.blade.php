@@ -3,6 +3,11 @@
 
 @section('sub_title', __('Register'))
 
+@section('auth_css')
+<!-- iCheck -->
+<link rel="stylesheet" href="{{ asset('bower_components/admin-lte/plugins/iCheck/square/blue.css') }}">
+endsection
+
 @section('content')
 <p class="login-box-msg">{{ __('Register a new membership') }}</p>
 
