@@ -18,6 +18,10 @@
     "I already have a membership": "既にアカウントをお持ちの方",
 
     "Request Reset Password": "<small>パスワードリセット用のURLリンクを送信します</small>",
-    "Send Password Reset Link": "送信"
+    "Send Password Reset Link": "送信",
 
+    "Logout": "ログアウト",
+    "Skin": "スキン",
+    "Select Skins": "スキンを選択して下さい",
+    "Settings": "設定"
 }
