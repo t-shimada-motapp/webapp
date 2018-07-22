@@ -38,9 +38,47 @@
 <div class="wrapper">
     @include('admin-lte.header')
     @include('admin-lte.sidebar')
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          @isset($page_title)
+          <h1>{!! $page_title !!}</h1>
+          @else
+          <h1>&nbsp;</h1>
+          @endisset
+          <ol class="breadcrumb">
+            @isset($breadcrumbs)
+            @forelse($breadcrumbs as $breadcrumb)
+            <li>
+                @isset($breadcrumb['link'])
+                <a href="{{ url($breadcrumb['link']) }}">
+                @else
+                <a href="#">
+                @endisset
+                    @isset($breadcrumb['icon'])
+                    <i class="fa {{ $breadcrumb['icon'] }}"></i>
+                    @endisset
+                    @isset($breadcrumb['title'])
+                    &nbsp;{{ $breadcrumb['title'] }}
+                    @else
+                    &nbsp;
+                    @endisset
+                </a>
+            </li>
+            @empty
+            @endforelse
+            @isset($page_title)
+            <li class="active">{!! $page_title !!}</li>
+            @endisset
+            @endisset
+          </ol>
+        </section>
 
-    @yield('content')
+        @yield('content')
 
+    </div>
+    <!-- /.content-wrapper -->
     @include('admin-lte.footer')
     @include('admin-lte.control-sidebar')
 </div>
