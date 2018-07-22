@@ -10,12 +10,19 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'user_id', 'password',
+        'name', 'email', 'user_id', 'password', 'skin',
     ];
 
     /**
@@ -27,8 +34,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function setting()
+    /**
+     *  Setup model event hooks
+     */
+    public static function boot()
     {
-        return $this->hasOne('App\UserSetting');
+        parent::boot();
+
+        self::creating(function ($model) {
+            $model->id = (string) \Illuminate\Support\Str::orderedUuid();
+        });
     }
+
 }

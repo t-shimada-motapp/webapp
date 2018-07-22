@@ -28,7 +28,32 @@
         <!-- Setting tab content -->
         <div class="tab-pane" id="control-sidebar-settings-tab">
             <h3 class="control-sidebar-heading">{{ __('Settings') }}</h3>
-            @yield('setting_tab')
+            <ul class="control-sidebar-menu">
+                @forelse($setting_menus as $menu)
+                <li>
+                    @isset($menu['link'])
+                    <a href="{{ url($menu['link']) }}">
+                    @else
+                    <a href="#">
+                    @endisset
+
+                        @isset($menu['icon'])
+                        <i class="fa {{ $menu['icon'] }} text-black"></i>
+                        @else
+                        <i class="fa fa-square text-black"></i>
+                        @endisset
+
+                        @isset($menu['title'])
+                        &nbsp;<span>{{ $menu['title'] }}</span>
+                        @else
+                        &nbsp;<span>no title</span>
+                        @endisset
+
+                    </a>
+                </li>
+                @empty
+                @endforelse
+            </ul>
         </div>
     </div>
 </aside>

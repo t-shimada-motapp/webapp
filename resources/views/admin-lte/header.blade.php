@@ -19,7 +19,7 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="glyphicon glyphicon-user"><span class="hidden-xs"> {{ Auth::user()->name }}</span></span>
+                        <span class="fa fa-user-circle"><span class="hidden-xs"> {{ Auth::user()->name }}</span></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="nav-item">

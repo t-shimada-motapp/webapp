@@ -18,5 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => ['api']], function(){
-  Route::resource('user_setting', 'Api\UserSettingController', ['except' => ['create', 'edit']]);
+  Route::resource('user', 'Api\UserController', ['except' => ['create', 'edit']]);
 });

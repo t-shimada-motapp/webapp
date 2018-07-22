@@ -33,7 +33,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition {{ Auth::user()->setting->skin }} sidebar-mini">
+<body class="hold-transition {{ Auth::user()->skin }} sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
     @include('admin-lte.header')
@@ -57,29 +57,25 @@
 <!-- AdminLTE for demo purposes
 <script src="{{ asset('bower_components/admin-lte/dist/js/demo.js') }}"></script>
 -->
-<script src="{{ asset('bower_components/axios/dist/axios.min.js') }}"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree();
-    @if (Auth::user()->setting !== null)
-    var currentSkin = '{{ Auth::user()->setting->skin }}';
+    @if (Auth::user()->skin !== null)
+    var currentSkin = '{{ Auth::user()->skin }}';
     @else
     var currentSkin = 'skin-blue';
     @endif
     $('#skins-list [data-skin]').click(function (e) {
       e.preventDefault();
       var skinName = $(this).data('skin');
-      var id = '{{ Auth::user()->setting->id }}';
-      var user_id = '{{ Auth::user()->setting->user_id }}';
       $.ajax({
-        url: '{{ url('/api/user_setting') }}/' + id,
+        url: `{{ url('/api/user') }}/{{ Auth::user()->id }}`,
         type: 'POST',
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         },
         dataType: 'json',
         data: {
-          user_id: user_id,
           skin: skinName,
           _method: 'PUT',
         },
@@ -90,6 +86,7 @@
         currentSkin = skinName;
       }).catch((...args) => {
         const [jqXHR, textStatus, errorThrown] = args;
+        console.log('oops')
         console.log(textStatus, errorThrown);
       });
     })

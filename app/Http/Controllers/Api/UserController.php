@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\UserSetting;
+use App\User;
 use App\Http\Controllers\Controller;
 
-class UserSettingController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class UserSettingController extends Controller
     public function index()
     {
         //
-        return UserSetting::all();
+        return User::all();
     }
 
     /**
@@ -28,11 +28,14 @@ class UserSettingController extends Controller
     public function store(Request $request)
     {
         //
-        $user_setting = new UserSetting;
-        $user_setting->user_id = $request->user_id;
-        $user_setting->skin = $request->skin;
-        $user_setting->save();
-        return redirect('api/user_setting');
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->user_id = $request->user_id;
+        $user->password = $request->password;
+        $user->skin = $request->skin;
+        $user->save();
+        return redirect('api/user');
     }
 
     /**
@@ -44,7 +47,7 @@ class UserSettingController extends Controller
     public function show($id)
     {
         //
-        return UserSetting::find($id);
+        return User::find($id);
     }
 
     /**
@@ -57,11 +60,29 @@ class UserSettingController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $user_setting = UserSetting::find($id);
-        $user_setting->user_id = $request->user_id;
-        $user_setting->skin = $request->skin;
-        $user_setting->save();
-        return redirect("api/user_setting/".$id);
+        $user = User::find($id);
+        if (isset($request->name))
+        {
+            $user->name = $request->name;
+        }
+        if (isset($request->email))
+        {
+            $user->email = $request->email;
+        }
+        if (isset($request->user_id))
+        {
+            $user->user_id = $request->user_id;
+        }
+        if (isset($request->password))
+        {
+            $user->password = $request->password;
+        }
+        if (isset($request->skin))
+        {
+            $user->skin = $request->skin;
+        }
+        $user->save();
+        return redirect("api/user/".$id);
     }
 
     /**
@@ -73,8 +94,8 @@ class UserSettingController extends Controller
     public function destroy($id)
     {
         //
-        $user_setting = UserSetting::find($id);
-        $user_setting->delete();
-        return redirect('api/user_setting');
+        $user = User::find($id);
+        $user->delete();
+        return redirect('api/user');
     }
 }

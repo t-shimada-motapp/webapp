@@ -1,12 +1,22 @@
 @extends('admin-lte.app')
 
+@php
+$setting_menus = [
+    [
+        'link' => '#',
+        'icon' => 'fa-tags',
+        'title' => 'スタッフ分類',
+    ],
+];
+@endphp
+
 @section('content')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Blank page  {{ Auth::user()->setting->skin }}
+        Blank page  {{ Auth::user()->skin }}
         <small>it all starts here</small>
       </h1>
       <ol class="breadcrumb">
@@ -47,6 +57,4 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-
 @endsection
